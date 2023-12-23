@@ -1,20 +1,18 @@
 <script lang="ts" setup>
 const toDosStore = useToDosStore();
-const items = [
-  {
-    label: "Getting Started",
-    icon: "i-heroicons-information-circle",
-    defaultOpen: false,
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.",
-  },
-];
+const userStore = useUserStore();
 </script>
 
 <template>
+  <div class="flex flex-col items-center text-4xl font-extrabold mb-4">
+    <h1 className="title">
+      {{ userStore.username && `${userStore.username}'s` }}
+    </h1>
+    <h1 className="title">ToDo List</h1>
+  </div>
   <div class="flex flex-col gap-y-4">
     <Input />
-    <ul class="flex flex-col gap-2" v-auto-animate>
+    <ul class="flex flex-col gap-2 max-w-2xl mx-auto w-full" v-auto-animate>
       <li v-for="toDo in toDosStore.toDos" :key="toDo.id">
         <div
           class="px-4 bg-white rounded-2xl shadow-sm shadow-black flex items-start"
@@ -25,12 +23,18 @@ const items = [
             class="pr-2 pt-3"
           />
           <UAccordion
-            :items="items"
+            :items="[
+              {
+                label: `${toDo.text}`,
+                defaultOpen: false,
+                slot: 'expanded',
+              },
+            ]"
             :ui="{ wrapper: 'flex flex-col w-full bg-white' }"
           >
             <template #default="{ item, index, open }">
               <UButton
-                color="gray"
+                color="white"
                 variant="ghost"
                 class="border-b border-gray-200 dark:border-gray-700"
                 :ui="{ rounded: 'rounded-none', padding: { sm: 'p-3' } }"
@@ -46,6 +50,11 @@ const items = [
                 </template>
               </UButton>
             </template>
+            <template #expanded="{ item, index, open }">
+              <div class="flex flex-col gap-2">
+                <p>{{ toDo.text }}</p>
+              </div>
+            </template>
           </UAccordion>
           <UButton
             v-if="toDo.checked"
@@ -56,11 +65,6 @@ const items = [
             size="xs"
           />
         </div>
-        <!-- <div class="">
-            <p class="truncate" :class="toDo.checked && 'line-through'">
-              {{ toDo.text }}
-            </p>
-          </div> -->
       </li>
     </ul>
   </div>
