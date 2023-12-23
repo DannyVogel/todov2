@@ -9,6 +9,7 @@ import {
 export const useAuth = () => {
   const userStore = useUserStore();
   const toDosStore = useToDosStore();
+  const { getToDos } = useDatabase();
 
   const signIn = async (email: string, password: string) => {
     try {
@@ -24,7 +25,7 @@ export const useAuth = () => {
           isLogged: true,
         };
         userStore.setLoggedInUser(user);
-        toDosStore.getToDos();
+        getToDos();
       }
     } catch (error) {
       console.log(error);
@@ -49,7 +50,7 @@ export const useAuth = () => {
           isLogged: true,
         };
         userStore.setLoggedInUser(user);
-        toDosStore.getToDos();
+        getToDos();
       }
     } catch (error) {
       console.log(error);
@@ -70,6 +71,7 @@ export const useAuth = () => {
           isLogged: true,
         };
         userStore.setLoggedInUser(user);
+        getToDos();
       }
     } catch (error) {
       console.log(error);

@@ -5,7 +5,6 @@ const emit = defineEmits(["close"]);
 
 const userStore = useUserStore();
 const { signIn, signUp, logInAsGuest, logout } = useAuth();
-const { getToDos } = useDatabase();
 
 const items = [
   {
@@ -35,15 +34,18 @@ const onSubmit = async (key: string, form: AuthForm) => {
     await signUp(form.email, form.password, form.name);
   }
   if (userStore.isLogged) {
-    emit("close");
+    setTimeout(async () => {
+      emit("close");
+    }, 1000);
   }
 };
 
 const guestLogIn = async () => {
   await logInAsGuest();
   if (userStore.isLogged) {
-    getToDos();
-    emit("close");
+    setTimeout(async () => {
+      emit("close");
+    }, 1000);
   }
 };
 
