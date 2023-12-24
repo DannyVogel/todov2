@@ -19,5 +19,4 @@ const addToDo = () => {
     />
     <UButton label="+" color="white" :ui="{ rounded: 'rounded-r-full' }" />
   </form>
-  <MobileNotifications />
 </template>
