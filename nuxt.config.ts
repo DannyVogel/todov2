@@ -21,7 +21,7 @@ export default defineNuxtConfig({
       name: "ToDo App",
       short_name: "ToDo",
       description: "A complete ToDo PWA built with Nuxt.js",
-      theme_color: "#ffffff",
+      theme_color: "#0891b2",
       lang: "en",
       display: "standalone",
       icons: [
