@@ -17,4 +17,5 @@ const showAuthModal = ref(false);
   <UModal v-model="showAuthModal">
     <AuthModal @close="showAuthModal = false" />
   </UModal>
+  <!-- <PWARefresh /> -->
 </template>

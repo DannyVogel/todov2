@@ -23,6 +23,7 @@ export default defineNuxtConfig({
       description: "A complete ToDo PWA built with Nuxt.js",
       theme_color: "#ffffff",
       lang: "en",
+      display: "standalone",
       icons: [
         {
           src: "/favicon-16x16.png",
@@ -50,9 +51,6 @@ export default defineNuxtConfig({
           type: "image/png",
         },
       ],
-    },
-    workbox: {
-      navigateFallback: "/",
     },
     devOptions: {
       enabled: true,
