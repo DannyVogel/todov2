@@ -17,12 +17,6 @@ const addToDo = () => {
       class="rounded-l-full text-center w-60"
       placeholder="Type new ToDo here..."
     />
-    <button
-      icon="i-heroicons-plus"
-      type="submit"
-      class="bg-white border-0 px-4 rounded-r-full py-2 flex items-center"
-    >
-      <UIcon name="i-heroicons-plus" />
-    </button>
+    <UButton label="+" color="white" :ui="{ rounded: 'rounded-r-full' }" />
   </form>
 </template>

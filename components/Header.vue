@@ -4,13 +4,7 @@ const showAuthModal = ref(false);
 
 <template>
   <div class="flex items-center gap-x-10 gap-y-2 flex-wrap sm:flex-nowrap h-14">
-    <UButton
-      icon="i-heroicons-moon"
-      color="white"
-      variant="ghost"
-      size="xl"
-      class="mr-auto"
-    />
+    <ColorToggle />
     <UButton
       icon="i-heroicons-user-circle"
       color="white"

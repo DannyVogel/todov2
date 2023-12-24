@@ -15,12 +15,13 @@ const userStore = useUserStore();
     <ul class="flex flex-col gap-2 max-w-2xl mx-auto w-full" v-auto-animate>
       <li v-for="toDo in toDosStore.toDos" :key="toDo.id">
         <div
-          class="px-4 bg-white rounded-2xl shadow-sm shadow-black flex items-start"
+          class="px-4 rounded-2xl shadow-sm shadow-black flex items-start bg-white dark:bg-gray-700"
         >
           <UCheckbox
             v-model="toDo.checked"
             name="notifications"
             class="pr-2 pt-3"
+            :ui="{ base: 'h-6 w-6', rounded: 'rounded-full' }"
           />
           <UAccordion
             :items="[
@@ -30,7 +31,7 @@ const userStore = useUserStore();
                 slot: 'expanded',
               },
             ]"
-            :ui="{ wrapper: 'flex flex-col w-full bg-white' }"
+            :ui="{ wrapper: 'flex flex-col w-full' }"
           >
             <template #default="{ item, index, open }">
               <UButton
@@ -52,7 +53,9 @@ const userStore = useUserStore();
             </template>
             <template #expanded="{ item, index, open }">
               <div class="flex flex-col gap-2">
-                <p>{{ toDo.text }}</p>
+                <p>
+                  {{ toDo.text }}
+                </p>
               </div>
             </template>
           </UAccordion>
