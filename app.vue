@@ -18,6 +18,18 @@ onAuthStateChanged(auth, (user: User | null) => {
     toDosStore.logout();
   }
 });
+
+function requestPermission() {
+  console.log("Requesting permission...");
+  Notification.requestPermission().then((permission) => {
+    if (permission === "granted") {
+      console.log("Notification permission granted.");
+    }
+  });
+}
+onMounted(() => {
+  requestPermission();
+});
 </script>
 
 <template>
