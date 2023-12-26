@@ -21,6 +21,12 @@ onAuthStateChanged(auth, (user: User | null) => {
   }
 });
 
+useHead({
+  htmlAttrs: { lang: "en" },
+  title: "ToDo",
+  meta: [{ name: "ToDo", content: "A complete ToDo PWA built with Nuxt.js." }],
+});
+
 useSeoMeta({
   title: "ToDo",
   ogTitle: "ToDo",
