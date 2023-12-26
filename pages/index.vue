@@ -4,6 +4,7 @@ const userStore = useUserStore();
 </script>
 
 <template>
+  <Title>{{ userStore.username && userStore.username + "'s" }} ToDo</Title>
   <UserHero />
   <div class="flex flex-col gap-y-4">
     <NewToDoInput />

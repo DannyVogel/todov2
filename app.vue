@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { onAuthStateChanged, auth, type User } from "~/config/firebase";
+import logo from "~/assets/logo.png";
+
 const userStore = useUserStore();
 const toDosStore = useToDosStore();
 const { getToDos } = useDatabase();
@@ -17,6 +19,15 @@ onAuthStateChanged(auth, (user: User | null) => {
     userStore.logout();
     toDosStore.logout();
   }
+});
+
+useSeoMeta({
+  title: "ToDo",
+  ogTitle: "ToDo",
+  description: "A complete ToDo PWA built with Nuxt.js",
+  ogDescription: "A complete ToDo PWA built with Nuxt.js",
+  ogImage: logo,
+  twitterCard: "summary_large_image",
 });
 </script>
 
