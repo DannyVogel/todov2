@@ -16,7 +16,14 @@ const addToDo = () => {
       v-model="text"
       class="rounded-l-full text-center w-60"
       placeholder="Type new ToDo here..."
+      name="newToDo"
     />
-    <UButton label="+" color="white" :ui="{ rounded: 'rounded-r-full' }" />
+    <UButton
+      icon="i-heroicons-plus"
+      size="xl"
+      color="white"
+      :ui="{ rounded: 'rounded-r-full' }"
+      class="w-12 h-12"
+    />
   </form>
 </template>

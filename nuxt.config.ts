@@ -16,6 +16,11 @@ export default defineNuxtConfig({
     preference: "light",
     classSuffix: "",
   },
+  $meta: {
+    name: "ToDo",
+    description: "A complete ToDo PWA built with Nuxt.js",
+    lang: "en",
+  },
   pwa: {
     manifest: {
       name: "ToDo App",
