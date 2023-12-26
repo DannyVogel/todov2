@@ -1,5 +1,13 @@
 <script lang="ts" setup>
-const toDoStore = useToDoStore();
+import type { ToDo } from "@/types/interfaces";
+const toDosStore = useToDosStore();
+
+defineProps({
+  toDo: {
+    type: Object as PropType<ToDo>,
+    required: true,
+  },
+});
 </script>
 
 <template>
