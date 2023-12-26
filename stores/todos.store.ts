@@ -45,7 +45,6 @@ export const useToDosStore = defineStore(
     watch(
       toDos,
       (newToDos) => {
-        console.log("toDos changed", newToDos);
         if (!userStore.uid) return;
         writeToDosToDB(newToDos);
       },
