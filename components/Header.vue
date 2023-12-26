@@ -12,7 +12,7 @@ const showAuthModal = ref(false);
       size="xl"
       class="ml-auto"
       @click="showAuthModal = true"
-      name="Login"
+      aria-label="Login"
     />
   </div>
   <UModal v-model="showAuthModal">

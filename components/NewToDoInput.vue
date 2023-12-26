@@ -24,6 +24,7 @@ const addToDo = () => {
       color="white"
       :ui="{ rounded: 'rounded-r-full' }"
       class="w-12 h-12"
+      aria-label="Add ToDo"
     />
   </form>
 </template>
