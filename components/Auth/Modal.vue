@@ -72,21 +72,26 @@ const signOut = async () => {
 
         <div v-if="item.key === 'login'" class="space-y-3">
           <UFormGroup label="Email" name="email">
-            <UInput v-model="form.email" />
+            <UInput size="lg" v-model="form.email" />
           </UFormGroup>
           <UFormGroup label="Password" name="password">
-            <UInput v-model="form.password" />
+            <UInput size="lg" v-model="form.password" />
           </UFormGroup>
         </div>
         <div v-else-if="item.key === 'signup'" class="space-y-3">
           <UFormGroup label="Name" name="name" required>
-            <UInput v-model="form.name" required />
+            <UInput size="lg" v-model="form.name" required />
           </UFormGroup>
           <UFormGroup label="Email" name="email" required>
-            <UInput v-model="form.email" required />
+            <UInput size="lg" v-model="form.email" required />
           </UFormGroup>
           <UFormGroup label="Password" name="Password" required>
-            <UInput v-model="form.password" type="password" required />
+            <UInput
+              size="lg"
+              v-model="form.password"
+              type="password"
+              required
+            />
           </UFormGroup>
         </div>
         <div
