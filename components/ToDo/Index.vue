@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import type { ToDo } from "@/types/interfaces";
-const toDosStore = useToDosStore();
 
 defineProps({
   toDo: {
@@ -8,6 +7,8 @@ defineProps({
     required: true,
   },
 });
+
+const toDosStore = useToDosStore();
 </script>
 
 <template>

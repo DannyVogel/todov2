@@ -4,12 +4,6 @@ import { v4 as uuidv4 } from "uuid";
 export const useToDosStore = defineStore(
   "toDos",
   () => {
-    // const name = ref('Eduardo') // <- this is state
-    // const doubleCount = computed(() => count.value * 2) // <- this is a getter
-    // function increment() { // <- this is an action
-    //   count.value++
-    // }
-
     const toDos = ref<ToDo[]>([]);
 
     const setUserToDoList = (newTodos: ToDo[]) => {

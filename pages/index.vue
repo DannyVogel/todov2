@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 const toDosStore = useToDosStore();
-const userStore = useUserStore();
 </script>
 
 <template>

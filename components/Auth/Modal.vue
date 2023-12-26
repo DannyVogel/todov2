@@ -1,8 +1,8 @@
 import type { UButton } from '#build/components';
 <script lang="ts" setup>
 import type { AuthForm } from "~/types/interfaces";
-const emit = defineEmits(["close"]);
 
+const emit = defineEmits(["close"]);
 const userStore = useUserStore();
 const { signIn, signUp, logInAsGuest, logout } = useAuth();
 
@@ -27,7 +27,6 @@ const items = [
 const form = reactive<AuthForm>({ email: "", password: "", name: "" });
 
 const onSubmit = async (key: string, form: AuthForm) => {
-  console.log("Submitted form:", key, form);
   if (key === "login") {
     await signIn(form.email, form.password);
   } else if (key === "signup") {
