@@ -52,6 +52,7 @@ export default defineNuxtConfig({
         },
       ],
     },
+    strategies: "injectManifest",
     devOptions: {
       enabled: true,
       type: "module",

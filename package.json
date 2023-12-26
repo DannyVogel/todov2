@@ -27,6 +27,9 @@
     "firebase": "^10.7.1",
     "firebase-admin": "^12.0.0",
     "pinia": "^2.1.7",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "workbox-core": "^7.0.0",
+    "workbox-precaching": "^7.0.0",
+    "workbox-routing": "^7.0.0"
   }
 }

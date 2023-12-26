@@ -1,6 +1,16 @@
 <script lang="ts" setup>
+import { getMessaging, onMessage } from "firebase/messaging";
 const toDosStore = useToDosStore();
 const userStore = useUserStore();
+
+const toast = useToast();
+
+const messaging = getMessaging();
+onMessage(messaging, (payload) => {
+  toast.add({ title: payload.toString() });
+  console.log("Message received. ", payload);
+  // ...
+});
 </script>
 
 <template>
