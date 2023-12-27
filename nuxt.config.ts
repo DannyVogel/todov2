@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
-  spaLoadingTemplate: false,
+  spaLoadingTemplate: "~/app/spa-loading-template.html",
   modules: [
     "@nuxt/ui",
     "@pinia/nuxt",

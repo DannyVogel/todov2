@@ -17,11 +17,15 @@ onAuthStateChanged(auth, (user: User | null) => {
     };
     userStore.setLoggedInUser(userInfo);
     getToDos();
-    loading.value = false;
+    setTimeout(() => {
+      loading.value = false;
+    }, 1000);
   } else {
     userStore.logout();
     toDosStore.logout();
-    loading.value = false;
+    setTimeout(() => {
+      loading.value = false;
+    }, 1000);
   }
 });
 

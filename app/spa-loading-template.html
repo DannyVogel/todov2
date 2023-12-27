@@ -1,6 +1,6 @@
 <style>
     .loading {
-        background-color: #1e293b;
+        background: linear-gradient(to top, #7C3AED, #06B6D4);
         position: absolute;
         top: 0;
         left: 0;
@@ -9,27 +9,21 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: #15803d;
     }
 
     #spinner {
-        width: 30px;
+        width: 60px;
     }
 
     #spinner #sGD stop {
-        stop-color: #16a34a;
+        stop-color: #FFFFFF;
     }
 
     #spinner .path-solid {
-        stroke: #16a34a;
-    }
-
-    .title {
-        color: white
+        stroke: #FFFFFF;
     }
 </style>
 <div class="loading">
-    <h1 class="title">ToDos</h1>
     <svg version="1.1" viewBox="0 0 64 64" width="1em" xmlns="http://www.w3.org/2000/svg" id="spinner">
         <circle class="path-gradient" cx="32" cy="32" r="28" fill="none" stroke="url(#sGD)" stroke-width="8" />
         <path class="path-solid" d="M 32,4 A 28 28,0,0,0,32,60" fill="none" stroke="#000" stroke-width="8"
