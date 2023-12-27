@@ -6,6 +6,8 @@ const userStore = useUserStore();
 const toDosStore = useToDosStore();
 const { getToDos } = useDatabase();
 
+const loading = ref(true);
+
 onAuthStateChanged(auth, (user: User | null) => {
   if (user) {
     const userInfo = {
@@ -15,9 +17,11 @@ onAuthStateChanged(auth, (user: User | null) => {
     };
     userStore.setLoggedInUser(userInfo);
     getToDos();
+    loading.value = false;
   } else {
     userStore.logout();
     toDosStore.logout();
+    loading.value = false;
   }
 });
 
@@ -41,7 +45,8 @@ useSeoMeta({
   <!-- <a href="https://www.flaticon.com/free-icons/work-order" title="work-order icons">Work-order icons created by Muhammad Atif - Flaticon</a> -->
   <NuxtPwaManifest />
   <NuxtLayout>
-    <NuxtPage />
+    <Loader v-if="loading" />
+    <NuxtPage v-else />
   </NuxtLayout>
   <UNotifications />
 </template>
