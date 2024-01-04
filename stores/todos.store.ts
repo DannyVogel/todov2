@@ -18,6 +18,7 @@ export const useToDosStore = defineStore(
         id: uuidv4(),
         text,
         checked: false,
+        notes: "",
       };
       toDos.value.push(newToDo);
     };

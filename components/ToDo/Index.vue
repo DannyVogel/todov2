@@ -50,10 +50,15 @@ const toDosStore = useToDosStore();
         </UButton>
       </template>
       <template #expanded="{ item, index, open }">
-        <div class="flex flex-col gap-2">
-          <p>
-            {{ toDo.text }}
-          </p>
+        <div class="flex items-center gap-2">
+          <p>Notes:</p>
+          <UInput
+            v-model="toDo.notes"
+            placeholder="Notes"
+            class="w-full"
+            size="xs"
+            variant="none"
+          />
         </div>
       </template>
     </UAccordion>
