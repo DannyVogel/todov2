@@ -19,6 +19,7 @@ const addToDo = () => {
     />
     <UButton
       icon="i-heroicons-plus"
+      type="submit"
       size="xl"
       color="white"
       :ui="{ rounded: 'rounded-r-full' }"
