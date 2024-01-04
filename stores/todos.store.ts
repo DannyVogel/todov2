@@ -30,6 +30,14 @@ export const useToDosStore = defineStore(
       toDoToCheck.checked = checked;
     };
 
+    const checkedToDos = computed(() => {
+      return toDos.value.filter((toDo) => toDo.checked);
+    });
+
+    const deleteCheckedToDos = () => {
+      toDos.value = toDos.value.filter((toDo) => !toDo.checked);
+    };
+
     const logout = () => {
       toDos.value = [];
     };
@@ -51,6 +59,8 @@ export const useToDosStore = defineStore(
       addToDo,
       removeToDo,
       setToDoChecked,
+      checkedToDos,
+      deleteCheckedToDos,
       logout,
     };
   },

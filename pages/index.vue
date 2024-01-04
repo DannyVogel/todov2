@@ -11,5 +11,6 @@ const toDosStore = useToDosStore();
         <ToDo :toDo="toDo" />
       </li>
     </ul>
+    <ButtonDeleteChecked />
   </div>
 </template>

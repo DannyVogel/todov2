@@ -62,7 +62,7 @@ const toDosStore = useToDosStore();
       icon="i-heroicons-trash"
       @click="toDosStore.removeToDo(toDo.id)"
       class="ml-auto mt-2"
-      color="red"
+      color="rose"
       size="xs"
     />
   </div>
