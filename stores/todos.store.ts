@@ -5,6 +5,9 @@ export const useToDosStore = defineStore(
   "toDos",
   () => {
     const toDos = ref<ToDo[]>([]);
+    const areAllChecked = computed(() => {
+      return toDos.value.length === checkedToDos.value.length;
+    });
 
     const setUserToDoList = (newTodos: ToDo[]) => {
       toDos.value = newTodos;
@@ -34,6 +37,14 @@ export const useToDosStore = defineStore(
       return toDos.value.filter((toDo) => toDo.checked);
     });
 
+    const toggleCheckAllToDos = () => {
+      if (areAllChecked.value) {
+        toDos.value.forEach((toDo) => (toDo.checked = false));
+      } else {
+        toDos.value.forEach((toDo) => (toDo.checked = true));
+      }
+    };
+
     const deleteCheckedToDos = () => {
       toDos.value = toDos.value.filter((toDo) => !toDo.checked);
     };
@@ -55,10 +66,12 @@ export const useToDosStore = defineStore(
 
     return {
       toDos,
+      areAllChecked,
       setUserToDoList,
       addToDo,
       removeToDo,
       setToDoChecked,
+      toggleCheckAllToDos,
       checkedToDos,
       deleteCheckedToDos,
       logout,
