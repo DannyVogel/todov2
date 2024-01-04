@@ -11,7 +11,10 @@ const toDosStore = useToDosStore();
         <ToDo :toDo="toDo" />
       </li>
     </ul>
-    <div class="flex items-center gap-5 max-w-2xl mx-auto w-full h-7">
+    <div
+      v-if="toDosStore.toDos.length > 1"
+      class="flex items-center gap-5 max-w-2xl mx-auto w-full h-7"
+    >
       <UCheckbox
         v-model="toDosStore.areAllChecked"
         @click="toDosStore.toggleCheckAllToDos"

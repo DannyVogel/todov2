@@ -51,13 +51,11 @@ const toDosStore = useToDosStore();
       </template>
       <template #expanded="{ item, index, open }">
         <div class="flex items-center gap-2">
-          <p>Notes:</p>
-          <UInput
+          <p v-if="toDo.notes">Notes:</p>
+          <input
             v-model="toDo.notes"
-            placeholder="Notes"
-            class="w-full"
-            size="xs"
-            variant="none"
+            placeholder="Add notes"
+            class="w-full focus:outline-none"
           />
         </div>
       </template>
