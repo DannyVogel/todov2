@@ -53,6 +53,15 @@ export default defineNuxtConfig({
           type: "image/png",
         },
       ],
+      share_target: {
+        action: "/share-target/",
+        method: "GET",
+        params: {
+          title: "title",
+          text: "text",
+          url: "url",
+        },
+      },
     },
     devOptions: {
       enabled: true,
