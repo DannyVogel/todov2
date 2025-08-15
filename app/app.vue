@@ -4,10 +4,10 @@ import type { User } from "firebase/auth";
 
 const userStore = useUserStore();
 const toDosStore = useToDosStore();
-const { getToDos } = useDatabase();
+const { getFromDb } = useDatabase();
 const { $firebase } = useNuxtApp();
 
-const loading = ref(false);
+const loading = ref(true);
 
 onAuthStateChanged($firebase.auth, (user: User | null) => {
   if (user) {
@@ -17,7 +17,7 @@ onAuthStateChanged($firebase.auth, (user: User | null) => {
       isLogged: true,
     };
     userStore.setLoggedInUser(userInfo);
-    getToDos();
+    getFromDb();
     setTimeout(() => {
       loading.value = false;
     }, 1000);
