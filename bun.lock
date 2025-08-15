@@ -6,7 +6,6 @@
       "dependencies": {
         "firebase": "^12.1.0",
         "pinia": "^3.0.3",
-        "uuid": "^11.1.0",
       },
       "devDependencies": {
         "@formkit/auto-animate": "^0.8.2",
@@ -14,9 +13,7 @@
         "@pinia-plugin-persistedstate/nuxt": "^1.2.1",
         "@pinia/nuxt": "^0.11.2",
         "@vite-pwa/nuxt": "^1.0.4",
-        "@vueuse/nuxt": "^13.6.0",
         "nuxt": "^4.0.3",
-        "typescript": "^5.9.2",
         "vue": "^3.5.18",
         "vue-router": "^4.5.1",
       },
@@ -802,8 +799,6 @@
     "@vueuse/math": ["@vueuse/math@13.6.0", "", { "dependencies": { "@vueuse/shared": "13.6.0" }, "peerDependencies": { "vue": "^3.5.0" } }, "sha512-555+vSgy3EOi3UZWsrxuOsbhQQLtmZFK8+BdAalHhlxLrJsHYqVUhbIuyFvjNFYgG4dpvLS8XcBVB8eaTYswBA=="],
 
     "@vueuse/metadata": ["@vueuse/metadata@13.6.0", "", {}, "sha512-rnIH7JvU7NjrpexTsl2Iwv0V0yAx9cw7+clymjKuLSXG0QMcLD0LDgdNmXic+qL0SGvgSVPEpM9IDO/wqo1vkQ=="],
-
-    "@vueuse/nuxt": ["@vueuse/nuxt@13.6.0", "", { "dependencies": { "@nuxt/kit": "^4.0.1", "@vueuse/core": "13.6.0", "@vueuse/metadata": "13.6.0", "local-pkg": "^1.1.1" }, "peerDependencies": { "nuxt": "^3.0.0 || ^4.0.0-0", "vue": "^3.5.0" } }, "sha512-zOZ5XkA7Svsx90934UWwKUsThAjKSD48Ks/mjEzl2gJm5d5zYJg+CJxPi7Wv5XECtCBOX18GpmTKqanWlbA1aQ=="],
 
     "@vueuse/shared": ["@vueuse/shared@13.6.0", "", { "peerDependencies": { "vue": "^3.5.0" } }, "sha512-pDykCSoS2T3fsQrYqf9SyF0QXWHmcGPQ+qiOVjlYSzlWd9dgppB2bFSM1GgKKkt7uzn0BBMV3IbJsUfHG2+BCg=="],
 

@@ -1,13 +1,11 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
-  spaLoadingTemplate: "~/spa-loading-template.html",
   modules: [
     "@nuxt/ui",
     "@pinia/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
     "@formkit/auto-animate/nuxt",
-    "@vueuse/nuxt",
     "@vite-pwa/nuxt",
   ],
   build: {
