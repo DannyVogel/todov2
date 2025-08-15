@@ -7,11 +7,13 @@ export default defineNuxtPlugin((nuxtApp) => {
   const database = getDatabase(app);
   const auth = getAuth(app);
   const toDoDB = dbRef(database, "/toDoApp");
+  const toDoListsDB = dbRef(database, "/toDoApp/toDoLists");
 
   const firebase = {
     database,
     auth,
     toDoDB,
+    toDoListsDB,
   };
   return {
     provide: {
