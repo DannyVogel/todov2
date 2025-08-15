@@ -1,11 +1,13 @@
 // stores/todos.ts
-import { v4 as uuidv4 } from "uuid";
-import { onValue, ref as dbRef } from "firebase/database";
+import { onValue, ref as dbRef, push } from "firebase/database";
 
 export const useToDosStore = defineStore("toDos", () => {
   const { writeToDb, removeFromDb } = useDatabase();
 
   const toDos = ref<Record<string, ToDo>>({});
+  const orderedToDos = computed(() => {
+    return Object.values(toDos.value).reverse(); // Newest first
+  });
 
   const areAllChecked = computed({
     get(): boolean {
@@ -26,14 +28,20 @@ export const useToDosStore = defineStore("toDos", () => {
   };
 
   const addToDo = (text: string) => {
-    const id = uuidv4();
+    const userTodosRef = dbRef(
+      $firebase.database,
+      `/toDoApp/toDoLists/${userStore.uid}`
+    );
+    const newTodoRef = push(userTodosRef);
+
     const newToDo: ToDo = {
-      id,
+      id: newTodoRef.key!,
       text,
       checked: false,
       notes: "",
     };
-    writeToDb({ [id]: newToDo });
+
+    writeToDb({ [newTodoRef.key!]: newToDo });
   };
 
   const removeToDo = (toDoToRemoveId: string) => {
@@ -100,6 +108,7 @@ export const useToDosStore = defineStore("toDos", () => {
 
   return {
     toDos,
+    orderedToDos,
     areAllChecked,
     addToDo,
     removeToDo,

@@ -7,7 +7,7 @@ const toDosStore = useToDosStore();
   <div class="flex flex-col gap-y-4">
     <NewToDoInput />
     <ul class="flex flex-col gap-2 max-w-2xl mx-auto w-full" v-auto-animate>
-      <li v-for="toDo in toDosStore.toDos" :key="toDo.id">
+      <li v-for="toDo in toDosStore.orderedToDos" :key="toDo.id">
         <ToDo :todo-id="toDo.id" />
       </li>
     </ul>
