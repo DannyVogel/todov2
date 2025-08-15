@@ -8,16 +8,16 @@ const toDosStore = useToDosStore();
     <NewToDoInput />
     <ul class="flex flex-col gap-2 max-w-2xl mx-auto w-full" v-auto-animate>
       <li v-for="toDo in toDosStore.toDos" :key="toDo.id">
-        <ToDo :toDo="toDo" />
+        <ToDo :todo-id="toDo.id" />
       </li>
     </ul>
     <div
-      v-if="toDosStore.toDos.length > 1"
+      v-if="Object.keys(toDosStore.toDos).length > 1"
       class="flex items-center gap-5 max-w-2xl mx-auto w-full h-7"
     >
       <UCheckbox
         v-model="toDosStore.areAllChecked"
-        @click="toDosStore.toggleCheckAllToDos"
+        @click="toDosStore.setAllTodosChecked"
         name="notifications"
         class="pl-4"
         :ui="{ base: 'h-6 w-6', rounded: 'rounded-full' }"

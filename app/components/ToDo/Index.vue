@@ -1,20 +1,28 @@
 <script lang="ts" setup>
-defineProps({
-  toDo: {
-    type: Object as PropType<ToDo>,
+const props = defineProps({
+  todoId: {
+    type: String,
     required: true,
   },
 });
 
 const toDosStore = useToDosStore();
+const toDo = computed(() => toDosStore.toDos[props.todoId]);
+const todoChecked = computed({
+  get: () => toDo.value?.checked || false,
+  set: (value: boolean) => {
+    toDosStore.setToDoChecked(props.todoId, value);
+  },
+});
 </script>
 
 <template>
   <div
+    v-if="toDo"
     class="px-4 rounded-2xl shadow-sm shadow-black flex items-start bg-white dark:bg-gray-700"
   >
     <UCheckbox
-      v-model="toDo.checked"
+      v-model="todoChecked"
       name="notifications"
       class="pr-2 pt-3"
       :ui="{ base: 'h-6 w-6', rounded: 'rounded-full' }"
