@@ -17,7 +17,6 @@ const toDosStore = useToDosStore();
     >
       <UCheckbox
         v-model="toDosStore.areAllChecked"
-        @click="toDosStore.setAllTodosChecked"
         name="notifications"
         class="pl-4"
         :ui="{ base: 'h-6 w-6', rounded: 'rounded-full' }"
