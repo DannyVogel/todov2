@@ -7,26 +7,46 @@ import {
 
 export const useDatabase = () => {
   const userStore = useUserStore();
-  const toDosStore = useToDosStore();
   const { $firebase } = useNuxtApp();
 
-  const getToDos = () => {
+  const getFromDb = () => {
+    if (!userStore.uid) return;
+
     const toDoListRef = dbRef(
       $firebase.database,
-      "/toDoApp/toDoLists/" + `${userStore.uid}`
+      `/toDoApp/toDoLists/${userStore.uid}`
     );
     get(toDoListRef).then((snapshot: DataSnapshot) => {
-      snapshot.exists()
-        ? toDosStore.setUserToDoList(snapshot.val())
-        : toDosStore.setUserToDoList([]);
+      const toDosStore = useToDosStore();
+      toDosStore.toDos = snapshot.val() || {};
     });
   };
 
-  const writeToDosToDB = (toDos: ToDo[]) => {
-    const updates: Record<string, any> = {};
-    updates["/toDoLists/" + userStore.uid] = toDos;
-    return update($firebase.toDoDB, updates);
+  const writeToDb = (toDos: Record<string, ToDo>) => {
+    if (!userStore.uid) return;
+
+    const updates: Record<string, ToDo> = {};
+    Object.entries(toDos).forEach(([id, toDo]) => {
+      updates[`${userStore.uid}/${id}`] = toDo;
+    });
+
+    update($firebase.toDoListsDB, updates).catch((error) => {
+      console.error("Failed to write to database:", error);
+    });
   };
 
-  return { writeToDosToDB, getToDos };
+  const removeFromDb = (toDoIds: string[]) => {
+    if (!userStore.uid) return;
+
+    const updates: Record<string, null> = {};
+    toDoIds.forEach((id) => {
+      updates[`${userStore.uid}/${id}`] = null;
+    });
+
+    update($firebase.toDoListsDB, updates).catch((error) => {
+      console.error("Failed to remove from database:", error);
+    });
+  };
+
+  return { writeToDb, getFromDb, removeFromDb };
 };
