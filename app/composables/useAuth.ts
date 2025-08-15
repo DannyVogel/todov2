@@ -8,7 +8,7 @@ import {
 export const useAuth = () => {
   const userStore = useUserStore();
   const toDosStore = useToDosStore();
-  const { getToDos } = useDatabase();
+  const { getFromDb } = useDatabase();
   const { $firebase } = useNuxtApp();
 
   const signIn = async (email: string, password: string) => {
@@ -25,7 +25,7 @@ export const useAuth = () => {
           isLogged: true,
         };
         userStore.setLoggedInUser(user);
-        getToDos();
+        getFromDb();
       }
     } catch (error) {
       console.log(error);
@@ -50,7 +50,7 @@ export const useAuth = () => {
           isLogged: true,
         };
         userStore.setLoggedInUser(user);
-        getToDos();
+        getFromDb();
       }
     } catch (error) {
       console.log(error);
@@ -71,7 +71,7 @@ export const useAuth = () => {
           isLogged: true,
         };
         userStore.setLoggedInUser(user);
-        getToDos();
+        getFromDb();
       }
     } catch (error) {
       console.log(error);
