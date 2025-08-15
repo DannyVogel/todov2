@@ -1,8 +1,7 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
-  spaLoadingTemplate: "~/app/spa-loading-template.html",
+  spaLoadingTemplate: "~/spa-loading-template.html",
   modules: [
     "@nuxt/ui",
     "@pinia/nuxt",
@@ -68,4 +67,18 @@ export default defineNuxtConfig({
       type: "module",
     },
   },
+  runtimeConfig: {
+    public: {
+      firebaseConfig: {
+        apiKey: "",
+        authDomain: "",
+        projectId: "",
+        storageBucket: "",
+        messagingSenderId: "",
+        appId: "",
+      },
+      test: "",
+    },
+  },
+  compatibilityDate: "2025-08-15",
 });

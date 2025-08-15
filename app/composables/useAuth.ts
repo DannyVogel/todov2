@@ -4,7 +4,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
-} from "~/config/firebase";
+} from "~/app/config/firebase";
 
 export const useAuth = () => {
   const userStore = useUserStore();

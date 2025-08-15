@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import type { ToDo } from "@/types/interfaces";
-
 defineProps({
   toDo: {
     type: Object as PropType<ToDo>,

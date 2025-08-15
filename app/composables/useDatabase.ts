@@ -1,5 +1,11 @@
-import type { ToDo } from "~/types/interfaces";
-import { get, ref as dbRef, update, toDoDB, database } from "~/config/firebase";
+import type { ToDo } from "~/shared/types/interfaces";
+import {
+  get,
+  ref as dbRef,
+  update,
+  toDoDB,
+  database,
+} from "~/app/config/firebase";
 import { DataSnapshot } from "firebase/database";
 
 export const useDatabase = () => {
