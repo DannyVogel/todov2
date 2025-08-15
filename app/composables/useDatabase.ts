@@ -1,20 +1,18 @@
-import type { ToDo } from "~/shared/types/interfaces";
 import {
-  get,
   ref as dbRef,
+  get,
   update,
-  toDoDB,
-  database,
-} from "~/app/config/firebase";
-import { DataSnapshot } from "firebase/database";
+  type DataSnapshot,
+} from "firebase/database";
 
 export const useDatabase = () => {
   const userStore = useUserStore();
   const toDosStore = useToDosStore();
+  const { $firebase } = useNuxtApp();
 
   const getToDos = () => {
     const toDoListRef = dbRef(
-      database,
+      $firebase.database,
       "/toDoApp/toDoLists/" + `${userStore.uid}`
     );
     get(toDoListRef).then((snapshot: DataSnapshot) => {
@@ -27,7 +25,7 @@ export const useDatabase = () => {
   const writeToDosToDB = (toDos: ToDo[]) => {
     const updates: Record<string, any> = {};
     updates["/toDoLists/" + userStore.uid] = toDos;
-    return update(toDoDB, updates);
+    return update($firebase.toDoDB, updates);
   };
 
   return { writeToDosToDB, getToDos };

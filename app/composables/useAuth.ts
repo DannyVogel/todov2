@@ -1,20 +1,20 @@
 import {
-  auth,
-  updateProfile,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
-} from "~/app/config/firebase";
+  updateProfile,
+} from "firebase/auth";
 
 export const useAuth = () => {
   const userStore = useUserStore();
   const toDosStore = useToDosStore();
   const { getToDos } = useDatabase();
+  const { $firebase } = useNuxtApp();
 
   const signIn = async (email: string, password: string) => {
     try {
       const userCredential = await signInWithEmailAndPassword(
-        auth,
+        $firebase.auth,
         email,
         password
       );
@@ -35,13 +35,13 @@ export const useAuth = () => {
   const signUp = async (email: string, password: string, name: string) => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
-        auth,
+        $firebase.auth,
         email,
         password
       );
       if (userCredential) {
-        auth.currentUser &&
-          updateProfile(auth.currentUser, {
+        $firebase.auth.currentUser &&
+          updateProfile($firebase.auth.currentUser, {
             displayName: name,
           });
         const user = {
@@ -60,7 +60,7 @@ export const useAuth = () => {
   const logInAsGuest = async () => {
     try {
       const userCredential = await signInWithEmailAndPassword(
-        auth,
+        $firebase.auth,
         "guest@guest.com",
         "123456"
       );
@@ -79,7 +79,7 @@ export const useAuth = () => {
   };
 
   const logout = async () => {
-    await signOut(auth);
+    await signOut($firebase.auth);
     userStore.logout();
     toDosStore.logout();
   };
